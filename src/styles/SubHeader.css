@@ -1,0 +1,65 @@
+.sub-header {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.sub-header-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    width: 200px;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+
+
+.sub-header-images {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+.active {
+    color: #ed2e46;
+    box-shadow: 0 2px 0 0 #ed2e46;
+}
+
+.Delivery-inactive {
+    background-image: url(https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png);
+}
+
+.Delivery-active {
+    background-image: url(https://b.zmtcdn.com/data/o2_assets/c0bb85d3a6347b2ec070a8db694588261616149578.png);
+    background-color: #fceec0;
+}
+
+.Dining-inactive {
+    background-image: url(https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png);
+}
+
+.Dining-active {
+    background-image: url(https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png);
+    background-color: #fceec0;
+}
+
+.NightLife-inactive {
+    background-image: url(https://b.zmtcdn.com/data/o2_assets/01040767e4943c398e38e3592bb1ba8a1616150142.png);
+
+}
+
+.NightLife-active {
+    background-image: url(https://b.zmtcdn.com/data/o2_assets/855687dc64a5e06d737dae45b7f6a13b1616149818.png);
+    background-color: #fceec0;
+}

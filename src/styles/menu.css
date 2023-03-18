@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.item {
+    width: 40%;
+}

@@ -1,0 +1,139 @@
+.heading {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.page-Restraunts-card-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.Restraunt-card {
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    position: relative;
+    cursor: pointer;
+    align-items: space-between;
+    gap: 5px;
+}
+
+.Restraunt-card-img {
+    height: 250px;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.Restraunt-card-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Restraunt-card-title {
+    font-size: 18px;
+    font-weight: 500;
+    width: 80%;
+}
+
+.Restraunt-card-rating {
+    font-size: 12px;
+    font-weight: 600;
+    background-color: green;
+    color: white;
+    border-radius: 6px;
+    height: max-content;
+    padding: 4px;
+    margin-top: 5px;
+}
+
+.Restraunt-card-categories,
+.Restraunt-card-price {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(99, 99, 99);
+}
+
+.Restraunt-card-categories {
+    width: 175px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Restraunt-card-location {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(141, 141, 141);
+}
+
+.Restraunt-card-offer {
+    position: absolute;
+    top: 210px;
+    left: 10px;
+    color: white;
+    background-color: rgb(0, 139, 253);
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.Restraunt-card-time {
+    position: absolute;
+    top: 210px;
+    left: 260px;
+    color: black;
+    background-color: rgba(231, 231, 231, 0.822);
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.collections-section-cards-container {
+    display: flex;
+    gap: 16px;
+
+    align-items: center;
+}
+
+.collections-section-card {
+    height: 320px;
+    width: 260px;
+    position: relative;
+    color: white;
+}
+
+.collections-section-card-img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(60%);
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.collections-section-card-title,
+.collections-section-card-count {
+    width: 230px;
+    position: absolute;
+}
+
+.collections-section-card-title {
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    top: 266px;
+    left: 15px;
+    right: 15px;
+}
+
+
+.collections-section-card-count {
+    top: 294px;
+    left: 15px;
+    font-size: 14px;
+    font-weight: 400;
+}
