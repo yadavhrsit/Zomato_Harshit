@@ -22,9 +22,7 @@ function App() {
         <SubHeader />
         <Routes>
           <Route path='/' element={<DeliveryPage />} />
-          <Route path='/Delivery' element={<DeliveryPage />} >
-
-          </Route>
+          <Route path='/Delivery' element={<DeliveryPage />} />
           <Route path='/Dining' element={<DiningOutPage />} />
           <Route path='/Nightlife' element={<NightLifePage />} />
           <Route path='/menu' element={<Restaurant />} />
