@@ -40,7 +40,7 @@ function DeliveryPage() {
                 <div className='page-Restraunts-card-container'>
                     {
                         Restraunts.map((restraunt) =>
-                            <Link to={'/menu'}><RestrauntsCard title={restraunt.title} img={restraunt.img} rating={restraunt.rating} categories={restraunt.categories} price={restraunt.price} offer={restraunt.offer} time={restraunt.time} />
+                            <Link to={'/Delivery/' + restraunt.title}><RestrauntsCard title={restraunt.title} img={restraunt.img} rating={restraunt.rating} categories={restraunt.categories} price={restraunt.price} offer={restraunt.offer} time={restraunt.time} />
                             </Link>
                         )
                     }

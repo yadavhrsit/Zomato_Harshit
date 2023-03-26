@@ -23,6 +23,7 @@ function App() {
         <Routes>
           <Route path='/' element={<DeliveryPage />} />
           <Route path='/Delivery' element={<DeliveryPage />} />
+          <Route path='/Delivery/:id' element={<menu />} />
           <Route path='/Dining' element={<DiningOutPage />} />
           <Route path='/Nightlife' element={<NightLifePage />} />
           <Route path='/menu' element={<Restaurant />} />

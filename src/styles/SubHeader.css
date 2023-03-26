@@ -2,36 +2,37 @@
     height: 100px;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
 }
-
 
 .sub-header-items {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 10px;
     height: 100%;
-    width: 200px;
+    width: 160px;
     font-size: 20px;
     cursor: pointer;
     text-decoration: none !important;
 }
-
+.sub-header a {
+    height: 100%;
+}
 
 
 .sub-header-images {
     height: 60px;
     width: 60px;
     border-radius: 50%;
-    background-size: 40px;
+    padding: 10px;
+    background-size:30px;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 
 
-.active {
+.activeLink {
     color: #ed2e46;
     box-shadow: 0 2px 0 0 #ed2e46;
 }
@@ -51,7 +52,7 @@
 
 .Dining-active {
     background-image: url(https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png);
-    background-color: #fceec0;
+    background-color: #e5f3f3;
 }
 
 .NightLife-inactive {
@@ -61,5 +62,5 @@
 
 .NightLife-active {
     background-image: url(https://b.zmtcdn.com/data/o2_assets/855687dc64a5e06d737dae45b7f6a13b1616149818.png);
-    background-color: #fceec0;
+    background-color: #faf6e7;
 }
