@@ -1,9 +1,12 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
+
 
 export default function Example() {
+    const { id } = useParams();
     return (
         <>
-            <h1>Restaurant Menu</h1>
+            <h1>{id} Restaurant Menu</h1>
             <table>
                 <thead>
                     <tr>

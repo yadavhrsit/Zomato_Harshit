@@ -13,6 +13,7 @@ import DiningOutPage from './components/DiningOutPage';
 import NightLifePage from './components/NightLifePage';
 import Error from './routes/Error';
 import Restaurant from './components/Restaurant';
+import RestaurantMenu from './components/RestaurantMenu';
 
 function App() {
   return (
@@ -22,8 +23,10 @@ function App() {
         <SubHeader />
         <Routes>
           <Route path='/' element={<DeliveryPage />} />
-          <Route path='/Delivery' element={<DeliveryPage />} />
-          <Route path='/Delivery/:id' element={<menu />} />
+          <Route path='/Delivery'>
+            <Route index element={<DeliveryPage />} />
+            <Route path=':id' element={<RestaurantMenu />} />
+          </Route>
           <Route path='/Dining' element={<DiningOutPage />} />
           <Route path='/Nightlife' element={<NightLifePage />} />
           <Route path='/menu' element={<Restaurant />} />

@@ -9,4 +9,4 @@ function Inspirations(props) {
     )
 }
 
-export default Inspirations
+export default Inspirations;

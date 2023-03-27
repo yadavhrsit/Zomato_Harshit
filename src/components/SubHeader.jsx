@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import options from '../database/subHeaderItems.js'
 import { NavLink } from 'react-router-dom';
 import '../styles/SubHeader.css';
@@ -22,7 +22,6 @@ export default function SubHeader() {
                                 </div>;
                             }}
                         </NavLink>
-
                     )
                 }
             </div >

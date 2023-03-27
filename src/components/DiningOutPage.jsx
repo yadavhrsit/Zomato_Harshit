@@ -3,6 +3,7 @@ import Restraunts from '../database/DineoutRestraunts';
 import RestrauntsCard from './RestrauntsCard';
 import Collection from './Collections';
 import DineoutCollections from '../database/DineoutCollections';
+import { Link } from 'react-router-dom';
 function DiningOutPage() {
     return (
         <>
@@ -29,7 +30,9 @@ function DiningOutPage() {
                 <div className='page-Restraunts-card-container'>
                     {
                         Restraunts.map((restraunt) =>
-                            <RestrauntsCard title={restraunt.title} img={restraunt.img} rating={restraunt.rating} categories={restraunt.categories} price={restraunt.price} time={restraunt.time} location={restraunt.location} />)
+                            <Link to={'/Dining/' + restraunt.title}><RestrauntsCard title={restraunt.title} img={restraunt.img} rating={restraunt.rating} categories={restraunt.categories} price={restraunt.price} time={restraunt.time} location={restraunt.location} />
+                            </Link>
+                        )
                     }
                 </div>
             </div>

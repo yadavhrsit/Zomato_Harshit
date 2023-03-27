@@ -3,6 +3,7 @@ import NightlifeRestraunts from '../database/NightlifeRestraunts';
 import Collection from './Collections';
 import NightLifeCollections from '../database/NightLifeCollections';
 import RestrauntsCard from './RestrauntsCard';
+import { Link } from 'react-router-dom';
 function NightLifePage() {
     return (
         <>
@@ -27,7 +28,8 @@ function NightLifePage() {
                 <div className='page-Restraunts-card-container'>
                     {
                         NightlifeRestraunts.map((NightlifeRestraunts) =>
-                            <RestrauntsCard title={NightlifeRestraunts.title} img={NightlifeRestraunts.img} rating={NightlifeRestraunts.rating} categories={NightlifeRestraunts.categories} price={NightlifeRestraunts.price} time={NightlifeRestraunts.time} location={NightlifeRestraunts.location} />
+                            <Link to={'/NigltLife/' + NightlifeRestraunts.title}><RestrauntsCard title={NightlifeRestraunts.title} img={NightlifeRestraunts.img} rating={NightlifeRestraunts.rating} categories={NightlifeRestraunts.categories} price={NightlifeRestraunts.price} time={NightlifeRestraunts.time} location={NightlifeRestraunts.location} />
+                            </Link>
                         )
                     }
                 </div>
