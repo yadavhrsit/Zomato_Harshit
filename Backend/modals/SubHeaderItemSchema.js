@@ -5,7 +5,6 @@ const SubHeaderItems = new Schema({
     title: String,
     activeImg: String,
     inactiveImg: String,
-    key: String
 })
 
 const SubHeaderItemsModal = mongoose.model('SubHeaderItems', SubHeaderItems);

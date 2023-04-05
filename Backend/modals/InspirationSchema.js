@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const Inspirations = new Schema({
     title: String,
-    img: String,
-    key: String
+    img: String
 })
 
 const InspirationsModal = mongoose.model('Inspirations', Inspirations);

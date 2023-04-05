@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const TopBrandSchema = new Schema({
     title: String,
     img: String,
-    time: String,
-    key: String
+    time: String
 })
 
 const TopBrandSchemaModal = mongoose.model('TopBrandSchema', TopBrandSchema);
