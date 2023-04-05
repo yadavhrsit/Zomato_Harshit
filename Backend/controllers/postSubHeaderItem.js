@@ -3,8 +3,8 @@ const SubHeaderItems = require('../modals/SubHeaderItemSchema');
 async function postSubHeaderItems(req, res) {
     const SubHeaderItem = new SubHeaderItems({
         title: req.body.title,
-        activeImg: req.body.img,
-        inactiveImg: req.body.img,
+        activeImg: req.body.activeImg,
+        inactiveImg: req.body.inactiveImg,
     });
     try {
         const result = await SubHeaderItem.save();

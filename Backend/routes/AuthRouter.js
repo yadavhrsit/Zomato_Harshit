@@ -34,8 +34,8 @@ const AddNightlifeCollection = require("../controllers/postNightlifeCollections"
 
 let verifyToken = require('../middlewares/VerifyToken');
 
-AuthRouter.get("/register", RegisterUser);
-AuthRouter.get("/login", LoginUser);
+AuthRouter.post("/register", RegisterUser);
+AuthRouter.post("/login", LoginUser);
 
 AuthRouter.get("/getsubheaderitem", GetSubHeaderItem);
 

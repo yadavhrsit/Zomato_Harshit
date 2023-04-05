@@ -6,7 +6,9 @@ const mongo = require("mongoose");
 const app = express();
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
 app.set('trust proxy', 1);
 
 
