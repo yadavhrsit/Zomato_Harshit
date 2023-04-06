@@ -1,10 +1,14 @@
 import React from 'react'
-import NightlifeRestraunts from '../database/NightlifeRestraunts';
 import Collection from './Collections';
-import NightLifeCollections from '../database/NightLifeCollections';
 import RestrauntsCard from './RestrauntsCard';
 import { Link } from 'react-router-dom';
+import UseFetch from './UseFetch';
 function NightLifePage() {
+
+    const { data: NightLifeCollections, loading: colLoading, error: colError } = UseFetch("http://localhost:5000/auth/getnightlifecollection")
+    const { data: NightlifeRestraunts, loading: restLoading, error: restError } = UseFetch("http://localhost:5000/auth/getnightliferestaurant");
+
+
     return (
         <>
             <div className='collections-section'>
@@ -13,9 +17,12 @@ function NightLifePage() {
             </div>
             <div className='collections-section-cards-container'>
                 {
-                    NightLifeCollections.map((collection) =>
-                        <Collection title={collection.title} img={collection.img} count={collection.count} />
-                    )}
+                    colLoading ? <p>Loading...</p> : (colError ? <p>Failed to load data from server</p> :
+                        NightLifeCollections?.map((collection) =>
+                            <Collection title={collection.title} img={collection.img} count={collection.count} />
+                        )
+                    )
+                }
             </div>
             <div className='filters'>
                 <button className='filters-button'>Filters</button>
@@ -27,9 +34,11 @@ function NightLifePage() {
             <div className='page-Restraunts-section'>
                 <div className='page-Restraunts-card-container'>
                     {
-                        NightlifeRestraunts.map((NightlifeRestraunts) =>
-                            <Link to={'/NigltLife/' + NightlifeRestraunts.title}><RestrauntsCard title={NightlifeRestraunts.title} img={NightlifeRestraunts.img} rating={NightlifeRestraunts.rating} categories={NightlifeRestraunts.categories} price={NightlifeRestraunts.price} time={NightlifeRestraunts.time} location={NightlifeRestraunts.location} />
-                            </Link>
+                        restLoading ? <p>Loading...</p> : (restError ? <p>Failed to load data from server</p> :
+                            NightlifeRestraunts?.map((NightlifeRestraunts) =>
+                                <Link to={'/NigltLife/' + NightlifeRestraunts.title}><RestrauntsCard title={NightlifeRestraunts.title} img={NightlifeRestraunts.img} rating={NightlifeRestraunts.rating} categories={NightlifeRestraunts.categories} price={NightlifeRestraunts.price} time={NightlifeRestraunts.time} location={NightlifeRestraunts.location} />
+                                </Link>
+                            )
                         )
                     }
                 </div>

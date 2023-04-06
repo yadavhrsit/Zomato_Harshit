@@ -1,26 +1,20 @@
-import { React, useState, useEffect } from 'react';
-// import options from '../database/subHeaderItems.js'
+import { React } from 'react';
 import { NavLink } from 'react-router-dom';
+import UseFetch from './UseFetch';
 import '../styles/SubHeader.css';
 import '../styles/Page.css';
 
 
 export default function SubHeader() {
 
-    const [options, setOptions] = useState();
-    useEffect(() => {
-        fetch("http://localhost:5000/auth/getsubheaderitem")
-            .then(response => response.json())
-            .then(data => setOptions(data))
-        window.alert("red")
-    }, [])
+    const { data: options, loading: optLoading, error: optError } = UseFetch("http://localhost:5000/auth/getsubheaderitem");
 
     return (
         <>
             <div className='sub-header'>
                 {
-                    options ?
-                        options.map((option) =>
+                    optLoading ? <p>Loading...</p> : (optError ? <p>Failed to load data from server</p> :
+                        options?.map((option) =>
                             <NavLink to={option.title} className={({ isActive }) => { return isActive ? "activeLink" : "" }}>
                                 {({ isActive }) => {
                                     return isActive ? <div className={'sub-header-items ' + option.title} >
@@ -33,7 +27,7 @@ export default function SubHeader() {
                                 }}
                             </NavLink>
                         )
-                        : " "
+                    )
                 }
             </div >
         </>

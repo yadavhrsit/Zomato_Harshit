@@ -1,10 +1,14 @@
 import React from 'react'
-import Restraunts from '../database/DineoutRestraunts';
 import RestrauntsCard from './RestrauntsCard';
 import Collection from './Collections';
-import DineoutCollections from '../database/DineoutCollections';
 import { Link } from 'react-router-dom';
+import UseFetch from './UseFetch';
 function DiningOutPage() {
+
+    const { data: DineoutCollections, loading: colLoading, error: colError } = UseFetch("http://localhost:5000/auth/getdiningcollection")
+    const { data: Restraunts, loading: restLoading, error: restError } = UseFetch("http://localhost:5000/auth/getdiningrestaurant");
+
+
     return (
         <>
             <div className='collections-section'>
@@ -12,10 +16,12 @@ function DiningOutPage() {
                 <p className='collections-section-heading'>Explore curated lists of top restaurants, cafes, pubs, and bars in Delhi NCR, based on trends</p>
             </div>
             <div className='collections-section-cards-container'>
-                {
-                    DineoutCollections.map((collection) =>
+                {colLoading ? <p>Loading...</p> : (colError ? <p>Failed to load data from server</p> :
+                    DineoutCollections?.map((collection) =>
                         <Collection title={collection.title} img={collection.img} count={collection.count} />
-                    )}
+                    )
+                )
+                }
 
             </div>
             <div className='filters'>
@@ -29,9 +35,11 @@ function DiningOutPage() {
             <div className='page-Restraunts-section'>
                 <div className='page-Restraunts-card-container'>
                     {
-                        Restraunts.map((restraunt) =>
-                            <Link to={'/Dining/' + restraunt.title}><RestrauntsCard title={restraunt.title} img={restraunt.img} rating={restraunt.rating} categories={restraunt.categories} price={restraunt.price} time={restraunt.time} location={restraunt.location} />
-                            </Link>
+                        restLoading ? <p>Loading...</p> : (restError ? <p>Failed to load data from server</p> :
+                            Restraunts?.map((restraunt) =>
+                                <Link to={'/Dining/' + restraunt.title}><RestrauntsCard title={restraunt.title} img={restraunt.img} rating={restraunt.rating} categories={restraunt.categories} price={restraunt.price} time={restraunt.time} location={restraunt.location} />
+                                </Link>
+                            )
                         )
                     }
                 </div>
