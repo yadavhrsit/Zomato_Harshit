@@ -1,16 +1,17 @@
 import { React } from 'react';
-import '../styles/DeliveryPage.css';
-import Inspirations from './Inspirations.jsx';
+import '../Delivery/DeliveryPage.css';
+import Inspirations from './Inspirations';
 import TopBrands from './TopBrands.jsx';
-import RestrauntsCard from './RestrauntsCard';
+import RestrauntsCard from '../Commons/RestrauntsCard';
 import { Link } from 'react-router-dom';
-import UseFetch from './UseFetch';
+import UseFetch from '../../Utils/UseFetch';
+import { getInspirations, getTopBrands, deliveryRestaurants } from '../../Utils/APIs';
 
 function DeliveryPage() {
 
-    const { data: inspirations, loading: inspLoading, error: inspError } = UseFetch("http://localhost:5000/auth/getinspiration")
-    const { data: topBrands, loading: topLoading, error: topError } = UseFetch("http://localhost:5000/auth/gettopbrand");
-    const { data: Restraunts, loading: restLoading, error: restError } = UseFetch("http://localhost:5000/auth/getdeliveryrestaurant");
+    const { data: inspirations, loading: inspLoading, error: inspError } = UseFetch(getInspirations)
+    const { data: topBrands, loading: topLoading, error: topError } = UseFetch(getTopBrands);
+    const { data: Restraunts, loading: restLoading, error: restError } = UseFetch(deliveryRestaurants);
 
     return (
         <>
@@ -49,7 +50,7 @@ function DeliveryPage() {
                     {
                         restLoading ? <p>Loading...</p> : (restError ? <p>Failed to load data from server</p> :
                             Restraunts?.map((restraunt) =>
-                                <Link to={'/Delivery/' + restraunt.title}><RestrauntsCard title={restraunt.title} img={restraunt.img} rating={restraunt.rating} categories={restraunt.categories} price={restraunt.price} offer={restraunt.offer} time={restraunt.time} />
+                                <Link to={'/Delivery/' + restraunt.title}><RestrauntsCard {...restraunt} />
                                 </Link>
                             )
                         )

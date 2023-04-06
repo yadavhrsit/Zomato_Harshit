@@ -1,19 +1,18 @@
 import './App.css';
-import Header from './components/Header.jsx';
-import SubHeader from './components/SubHeader.jsx';
-
+import './Pages/Commons/Page.css'
+import Header from './Header/Header';
+import SubHeader from './SubHeader/SubHeader';
+import DeliveryPage from './Pages/Delivery/DeliveryPage';
+import DiningOutPage from './Pages/DiningOut/DiningOutPage';
+import NightLifePage from './Pages/NightLife/NightLifePage';
+import RestaurantMenu from './Pages/Commons/RestaurantMenu';
+import Error from './routes/Error';
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
 
-import DeliveryPage from './components/DeliveryPage';
-import DiningOutPage from './components/DiningOutPage';
-import NightLifePage from './components/NightLifePage';
-import Error from './routes/Error';
-import Restaurant from './components/Restaurant';
-import RestaurantMenu from './components/RestaurantMenu';
 
 function App() {
   return (
@@ -29,7 +28,6 @@ function App() {
           </Route>
           <Route path='/Dining' element={<DiningOutPage />} />
           <Route path='/Nightlife' element={<NightLifePage />} />
-          <Route path='/menu' element={<Restaurant />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </Router>

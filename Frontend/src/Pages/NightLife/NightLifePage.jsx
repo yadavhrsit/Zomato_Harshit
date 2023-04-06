@@ -1,13 +1,13 @@
 import React from 'react'
-import Collection from './Collections';
-import RestrauntsCard from './RestrauntsCard';
+import Collection from '../Commons/Collections';
+import RestrauntsCard from '../Commons/RestrauntsCard';
 import { Link } from 'react-router-dom';
-import UseFetch from './UseFetch';
+import UseFetch from '../../Utils/UseFetch';
+import { nightlifeCollections, nightlifeRestaurants } from '../../Utils/APIs';
 function NightLifePage() {
 
-    const { data: NightLifeCollections, loading: colLoading, error: colError } = UseFetch("http://localhost:5000/auth/getnightlifecollection")
-    const { data: NightlifeRestraunts, loading: restLoading, error: restError } = UseFetch("http://localhost:5000/auth/getnightliferestaurant");
-
+    const { data: NightLifeCollections, loading: colLoading, error: colError } = UseFetch(nightlifeCollections)
+    const { data: NightlifeRestraunts, loading: restLoading, error: restError } = UseFetch(nightlifeRestaurants);
 
     return (
         <>
@@ -35,8 +35,8 @@ function NightLifePage() {
                 <div className='page-Restraunts-card-container'>
                     {
                         restLoading ? <p>Loading...</p> : (restError ? <p>Failed to load data from server</p> :
-                            NightlifeRestraunts?.map((NightlifeRestraunts) =>
-                                <Link to={'/NigltLife/' + NightlifeRestraunts.title}><RestrauntsCard title={NightlifeRestraunts.title} img={NightlifeRestraunts.img} rating={NightlifeRestraunts.rating} categories={NightlifeRestraunts.categories} price={NightlifeRestraunts.price} time={NightlifeRestraunts.time} location={NightlifeRestraunts.location} />
+                            NightlifeRestraunts?.map((Restraunts) =>
+                                <Link to={'/NigltLife/' + Restraunts.title}><RestrauntsCard {...Restraunts} />
                                 </Link>
                             )
                         )

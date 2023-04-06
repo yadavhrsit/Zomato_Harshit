@@ -1,13 +1,12 @@
 import { React } from 'react';
 import { NavLink } from 'react-router-dom';
-import UseFetch from './UseFetch';
-import '../styles/SubHeader.css';
-import '../styles/Page.css';
-
+import UseFetch from '../Utils/UseFetch';
+import { subHeaderItems } from '../Utils/APIs';
+import './SubHeader.css';
 
 export default function SubHeader() {
 
-    const { data: options, loading: optLoading, error: optError } = UseFetch("http://localhost:5000/auth/getsubheaderitem");
+    const { data: options, loading: optLoading, error: optError } = UseFetch(subHeaderItems);
 
     return (
         <>

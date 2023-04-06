@@ -1,13 +1,13 @@
 import React from 'react'
-import RestrauntsCard from './RestrauntsCard';
-import Collection from './Collections';
+import RestrauntsCard from '../Commons/RestrauntsCard';
+import Collection from '../Commons/Collections';
 import { Link } from 'react-router-dom';
-import UseFetch from './UseFetch';
+import UseFetch from '../../Utils/UseFetch';
+import { diningCollections, diningRestaurants } from '../../Utils/APIs';
 function DiningOutPage() {
 
-    const { data: DineoutCollections, loading: colLoading, error: colError } = UseFetch("http://localhost:5000/auth/getdiningcollection")
-    const { data: Restraunts, loading: restLoading, error: restError } = UseFetch("http://localhost:5000/auth/getdiningrestaurant");
-
+    const { data: DineoutCollections, loading: colLoading, error: colError } = UseFetch(diningCollections)
+    const { data: Restraunts, loading: restLoading, error: restError } = UseFetch(diningRestaurants);
 
     return (
         <>
@@ -37,7 +37,7 @@ function DiningOutPage() {
                     {
                         restLoading ? <p>Loading...</p> : (restError ? <p>Failed to load data from server</p> :
                             Restraunts?.map((restraunt) =>
-                                <Link to={'/Dining/' + restraunt.title}><RestrauntsCard title={restraunt.title} img={restraunt.img} rating={restraunt.rating} categories={restraunt.categories} price={restraunt.price} time={restraunt.time} location={restraunt.location} />
+                                <Link to={'/Dining/' + restraunt.title}><RestrauntsCard {...restraunt} />
                                 </Link>
                             )
                         )
