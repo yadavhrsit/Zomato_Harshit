@@ -20,14 +20,15 @@
 }
 
 .page-Restraunts-card-container {
-    width: 100%;
+    flex-basis: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 20px;
 }
 
 .page-Restraunts-card-container a{
-    width: calc(100%/3 - 20px);
+    flex-basis: calc(100%/3 - 20px);
+    max-width: 340px;
 }
 
 
@@ -158,4 +159,10 @@
     left: 15px;
     font-size: 14px;
     font-weight: 400;
+}
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

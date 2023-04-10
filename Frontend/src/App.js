@@ -1,18 +1,18 @@
-import './App.css';
-import './Pages/Commons/Page.css'
-import Header from './Header/Header';
-import SubHeader from './SubHeader/SubHeader';
-import DeliveryPage from './Pages/Delivery/DeliveryPage';
-import DiningOutPage from './Pages/DiningOut/DiningOutPage';
-import NightLifePage from './Pages/NightLife/NightLifePage';
-import RestaurantMenu from './Pages/Commons/RestaurantMenu';
-import Error from './routes/Error';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
-
+import './App.css';
+import './Pages/Commons/Page.css'
+import Header from './Header/Header';
+import Error from './routes/Error';
+const SubHeader = React.lazy(() => import('./SubHeader/SubHeader'));
+const DeliveryPage = React.lazy(() => import('./Pages/Delivery/DeliveryPage'));
+const RestaurantMenu = React.lazy(() => import('./Pages/Commons/RestaurantMenu'));
+const DiningOutPage = React.lazy(() => import('./Pages/DiningOut/DiningOutPage'));
+const NightLifePage = React.lazy(() => import('./Pages/NightLife/NightLifePage'));
 
 function App() {
   return (
@@ -23,11 +23,11 @@ function App() {
         <Routes>
           <Route path='/' element={<DeliveryPage />} />
           <Route path='/Delivery'>
-            <Route index element={<DeliveryPage />} />
-            <Route path=':id' element={<RestaurantMenu />} />
+            <Route index element={<React.Suspense fallback="Loading"><DeliveryPage /></React.Suspense>} />
+            <Route path=':id' element={<React.Suspense fallback="Loading"><RestaurantMenu /></React.Suspense>} />
           </Route>
-          <Route path='/Dining' element={<DiningOutPage />} />
-          <Route path='/Nightlife' element={<NightLifePage />} />
+          <Route path='/Dining' element={<React.Suspense fallback="Loading"> <DiningOutPage /></React.Suspense>} />
+          <Route path='/Nightlife' element={<React.Suspense fallback="Loading"> <NightLifePage /></React.Suspense>} />
           <Route path='*' element={<Error />} />
         </Routes>
       </Router>
