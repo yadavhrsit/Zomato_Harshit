@@ -4,19 +4,22 @@ function UseFetch(url) {
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-
+        setLoading(true);
         axios.get(url)
             .then((response) => {
                 setData(response.data);
+                setLoading(false);
             })
             .catch((err) => {
                 setError(err);
+                setLoading(false);
             })
     }, [url]);
 
-    return { data, error };
+    return { data, loading, error };
 }
 
 export default UseFetch;

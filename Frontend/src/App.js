@@ -23,11 +23,11 @@ function App() {
         <Routes>
           <Route path='/' element={<DeliveryPage />} />
           <Route path='/Delivery'>
-            <Route index element={<React.Suspense fallback="Loading"><DeliveryPage /></React.Suspense>} />
-            <Route path=':id' element={<React.Suspense fallback="Loading"><RestaurantMenu /></React.Suspense>} />
+            <Route index element={<DeliveryPage />} />
+            <Route path=':id' element={<RestaurantMenu />} />
           </Route>
-          <Route path='/Dining' element={<React.Suspense fallback="Loading"> <DiningOutPage /></React.Suspense>} />
-          <Route path='/Nightlife' element={<React.Suspense fallback="Loading"> <NightLifePage /></React.Suspense>} />
+          <Route path='/Dining' element={<DiningOutPage />} />
+          <Route path='/Nightlife' element={<NightLifePage />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </Router>

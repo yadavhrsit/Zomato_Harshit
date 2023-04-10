@@ -7,8 +7,8 @@ import { motion } from 'framer-motion';
 import { diningCollections, diningRestaurants } from '../../Utils/APIs';
 function DiningOutPage() {
 
-    const { data: DineoutCollections, error: colError } = UseFetch(diningCollections)
-    const { data: Restraunts, error: restError } = UseFetch(diningRestaurants);
+    const { data: DineoutCollections, loading: colLoading, error: colError } = UseFetch(diningCollections)
+    const { data: Restraunts, loading: restLoading, error: restError } = UseFetch(diningRestaurants);
 
     return (
         <motion.div className='page-container' initial={{ opacity: 0 }}
@@ -20,17 +20,14 @@ function DiningOutPage() {
             </div>
             <div className='collections-section-cards-container'>
                 {colError ? <p>Failed to load data from server</p> :
-                    DineoutCollections?.map((collection) =>
-                        <Suspense
-                            fallback={
-                                <div className='collections-section-card'>
-                                    <img src={""} alt={""} className='collections-section-card-img'></img>
-                                    <p className='collections-section-card-title'>{""}</p>
-                                    <p className='collections-section-card-count'>{""}</p>
-                                </div>
-                            }>
+                    (colLoading ? <div className='collections-section-card loading'>
+                        <img src={""} alt={""} className='collections-section-card-img'></img>
+                        <p className='collections-section-card-title'>{""}</p>
+                        <p className='collections-section-card-count'>{""}</p>
+                    </div> :
+                        DineoutCollections?.map((collection) =>
                             <Collection title={collection.title} img={collection.img} count={collection.count} key={collection.title} />
-                        </Suspense>
+                        )
                     )
                 }
 
@@ -47,27 +44,25 @@ function DiningOutPage() {
                 <div className='page-Restraunts-card-container'>
                     {
                         restError ? <p>Failed to load data from server</p> :
-                            Restraunts?.map((restraunt) =>
-                                <Link to={'/Dining/' + restraunt.title} key={restraunt.title}>
-                                    <Suspense fallback={
-                                        <div className='Restraunt-card'>
-                                            <img className='Restraunt-card-img' src={""} alt={""}></img>
-                                            <div className='Restraunt-card-info'>
-                                                <p className='Restraunt-card-title'>{""}</p>
-                                                <p className='Restraunt-card-categories'>{""}</p>
-                                                <p className='Restraunt-card-price'>{""}</p>
-                                                <p className='Restraunt-card-location'>{""}</p>
-                                            </div>
-
-                                            <p className='Restraunt-card-time'>{""}</p>
-                                        </div>}>
-                                        <RestrauntsCard {...restraunt} /></Suspense>
-                                </Link>
+                            (restLoading ? <div className='Restraunt-card loading'>
+                                <img className='Restraunt-card-img' src={""} alt={""}></img>
+                                <div className='Restraunt-card-info'>
+                                    <p className='Restraunt-card-title'>{""}</p>
+                                    <p className='Restraunt-card-categories'>{""}</p>
+                                    <p className='Restraunt-card-price'>{""}</p>
+                                    <p className='Restraunt-card-location'>{""}</p>
+                                </div>
+                            </div> :
+                                Restraunts?.map((restraunt) =>
+                                    <Link to={'/Dining/' + restraunt.title} key={restraunt.title}>
+                                        <RestrauntsCard {...restraunt} />
+                                    </Link>
+                                )
                             )
                     }
                 </div>
             </div>
-        </motion.div>
+        </motion.div >
     )
 }
 

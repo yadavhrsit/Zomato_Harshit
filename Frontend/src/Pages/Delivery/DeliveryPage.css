@@ -11,11 +11,10 @@
 }
 
 .round-container {
-    padding: 10px;
+    gap: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .round-container-item {
@@ -38,4 +37,8 @@
     text-align: center;
     color: rgb(99, 99, 99);
     font-size: 13px;
+}
+
+.loading{
+    display: flex;
 }
