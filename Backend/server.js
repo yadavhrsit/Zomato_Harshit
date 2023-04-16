@@ -21,6 +21,9 @@ mongo.connect(process.env.MONGO_URL)
 const AuthRouter = require("./routes/AuthRouter");
 
 app.use("/auth", AuthRouter);
+app.use("/", (req, res) => {
+    res.send("<h1>Working Fine</h1>");
+});
 
 
 
