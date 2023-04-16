@@ -46,9 +46,9 @@ function DiningOutPage() {
                     {
                         restError ? <p>Failed to load data from server</p> :
                             (restLoading ?
-                                <a href='#'>
+                                <>
                                     <RestaurantLoader />
-                                </a>
+                                </>
 
                                 :
                                 Restraunts?.map((restraunt) =>
