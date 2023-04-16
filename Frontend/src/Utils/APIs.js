@@ -1,10 +1,10 @@
 module.exports = {
-    subHeaderItems: "http://localhost:5000/auth/getsubheaderitem",
-    deliveryRestaurants: "http://localhost:5000/auth/getdeliveryrestaurant",
-    diningRestaurants: "http://localhost:5000/auth/getdiningrestaurant",
-    nightlifeRestaurants: "http://localhost:5000/auth/getnightliferestaurant",
-    getTopBrands: "http://localhost:5000/auth/gettopbrand",
-    getInspirations: "http://localhost:5000/auth/getinspiration",
-    diningCollections: "http://localhost:5000/auth/getdiningcollection",
-    nightlifeCollections: "http://localhost:5000/auth/getnightlifecollection"
+    subHeaderItems: "https://zomato-harshit.vercel.app/auth/getsubheaderitem",
+    deliveryRestaurants: "https://zomato-harshit.vercel.app/auth/getdeliveryrestaurant",
+    diningRestaurants: "https://zomato-harshit.vercel.app/auth/getdiningrestaurant",
+    nightlifeRestaurants: "https://zomato-harshit.vercel.app/auth/getnightliferestaurant",
+    getTopBrands: "https://zomato-harshit.vercel.app/auth/gettopbrand",
+    getInspirations: "https://zomato-harshit.vercel.app/auth/getinspiration",
+    diningCollections: "https://zomato-harshit.vercel.app/auth/getdiningcollection",
+    nightlifeCollections: "https://zomato-harshit.vercel.app/auth/getnightlifecollection"
 };

@@ -32,11 +32,11 @@ function DeliveryPage() {
                     {
                         inspError ? <p>Failed to load data from server</p> :
                             (inspiLoading ? <>
-                                <InspirationLoader />
+                                <InspirationLoader key={1} />
                             </>
                                 :
                                 inspirations?.map((inspiration) =>
-                                    <Inspirations title={inspiration.title} img={inspiration.img} />
+                                    <Inspirations title={inspiration.title} img={inspiration.img} key={inspiration.title} />
                                 )
                             )
                     }

@@ -1,10 +1,11 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import RestrauntsCard from '../Commons/RestrauntsCard';
 import Collection from '../Commons/Collections';
 import { Link } from 'react-router-dom';
 import UseFetch from '../../Utils/UseFetch';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import { diningCollections, diningRestaurants } from '../../Utils/APIs';
+import { CollectionsLoader, RestaurantLoader } from '../Commons/loaders/Loaders';
 function DiningOutPage() {
 
     const { data: DineoutCollections, loading: colLoading, error: colError } = UseFetch(diningCollections)
@@ -20,11 +21,11 @@ function DiningOutPage() {
             </div>
             <div className='collections-section-cards-container'>
                 {colError ? <p>Failed to load data from server</p> :
-                    (colLoading ? <div className='collections-section-card loading'>
-                        <img src={""} alt={""} className='collections-section-card-img'></img>
-                        <p className='collections-section-card-title'>{""}</p>
-                        <p className='collections-section-card-count'>{""}</p>
-                    </div> :
+                    (colLoading ? <>
+                        <CollectionsLoader />
+                    </>
+
+                        :
                         DineoutCollections?.map((collection) =>
                             <Collection title={collection.title} img={collection.img} count={collection.count} key={collection.title} />
                         )
@@ -44,15 +45,12 @@ function DiningOutPage() {
                 <div className='page-Restraunts-card-container'>
                     {
                         restError ? <p>Failed to load data from server</p> :
-                            (restLoading ? <div className='Restraunt-card loading'>
-                                <img className='Restraunt-card-img' src={""} alt={""}></img>
-                                <div className='Restraunt-card-info'>
-                                    <p className='Restraunt-card-title'>{""}</p>
-                                    <p className='Restraunt-card-categories'>{""}</p>
-                                    <p className='Restraunt-card-price'>{""}</p>
-                                    <p className='Restraunt-card-location'>{""}</p>
-                                </div>
-                            </div> :
+                            (restLoading ?
+                                <a href='#'>
+                                    <RestaurantLoader />
+                                </a>
+
+                                :
                                 Restraunts?.map((restraunt) =>
                                     <Link to={'/Dining/' + restraunt.title} key={restraunt.title}>
                                         <RestrauntsCard {...restraunt} />
