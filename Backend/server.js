@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://zingy-tarsier-f0bc0b.netlify.app'
+    origin: 'https://zomato-harshit.netlify.app/'
 }));
 app.set('trust proxy', 1);
 
