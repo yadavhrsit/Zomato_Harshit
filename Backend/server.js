@@ -2,12 +2,13 @@ require("dotenv").config();
 const cors = require("cors");
 const express = require('express');
 const mongo = require("mongoose");
-const cookieParser = require('cookie-parser');
+var cookieParser = require('cookie-parser');
+const helmet = require('helmet')
 
 const app = express();
 app.use(express.json());
 app.use(helmet());
-app.use(cookieparser());
+app.use(cookieParser());
 app.use(cors({
     origin: 'https://zomato-harshit.netlify.app'
 }));
