@@ -37,7 +37,12 @@ const AddNightlifeCollection = require("../controllers/postNightlifeCollections"
 AuthRouter.post("/register", RegisterUser);
 AuthRouter.post("/login", LoginUser);
 AuthRouter.get("/logout", (req, res) => {
-    res.clearCookie("username");
+    res.clearCookie("User", "token");
+    res.send('done');
+});
+AuthRouter.get('/getcookie', (req, res) => {
+    console.log(req.cookies)
+    res.send(req.cookies);
 });
 
 AuthRouter.get("/getsubheaderitem", GetSubHeaderItem);

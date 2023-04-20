@@ -15,13 +15,28 @@ async function LoginUser(req, res) {
             bcrypt.compare(password, data.password, function (err, result) {
                 if (result) {
                     let accesstoken = jwt.sign({ email }, process.env.JWT_ACCESS_TOKEN, { expiresIn: "120m" })
-                    res.cookie("User", email);
-                    res.cookie("token", accesstoken);
+                    res.cookie("User", email
+                        , {
+                            maxAge: 10000,
+                            secure: false,
+                            httpOnly: true,
+                            sameSite: 'lax'
+
+                        }
+                    );
+                    res.cookie("token", accesstoken
+                        , {
+                            maxAge: 10000,
+                            secure: false,
+                            httpOnly: true,
+                            sameSite: 'lax'
+                        }
+                    );
                     return res.json({
                         message: "Logged in successfully",
                         login: true,
                         token: accesstoken
-                    })
+                    });
                 }
                 else {
                     return res.json({
