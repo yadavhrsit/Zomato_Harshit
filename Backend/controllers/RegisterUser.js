@@ -1,5 +1,5 @@
 const UserModal = require("../modals/UserSchema");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 function RegisterUser(req, res) {
     let name = req.body.name;
