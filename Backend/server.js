@@ -2,10 +2,12 @@ require("dotenv").config();
 const cors = require("cors");
 const express = require('express');
 const mongo = require("mongoose");
+const cookieParser = require('cookie-parser');
 
 const app = express();
 app.use(express.json());
-
+app.use(helmet());
+app.use(cookieparser());
 app.use(cors({
     origin: 'https://zomato-harshit.netlify.app'
 }));
@@ -24,7 +26,10 @@ app.use("/auth", AuthRouter);
 app.use("/", (req, res) => {
     res.send("<h1>Working Fine</h1>");
 });
-
+app.get('/setcookie', (req, res) => {
+    res.cookie(`Cookie token name`, `encrypted cookie string Value`);
+    res.send('Cookie have been saved successfully');
+});
 
 
 app.listen(Port, () => {

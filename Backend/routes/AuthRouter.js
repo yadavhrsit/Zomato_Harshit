@@ -1,5 +1,6 @@
 const express = require('express');
 const AuthRouter = express.Router();
+const verifyToken = require('../middlewares/VerifyToken');
 
 const RegisterUser = require("../controllers/RegisterUser");
 const LoginUser = require("../controllers/LoginUser");
@@ -32,10 +33,12 @@ const AddInspiration = require("../controllers/postInspiration");
 const AddDiningCollection = require("../controllers/postDiningCollections");
 const AddNightlifeCollection = require("../controllers/postNightlifeCollections");
 
-let verifyToken = require('../middlewares/VerifyToken');
 
 AuthRouter.post("/register", RegisterUser);
 AuthRouter.post("/login", LoginUser);
+app.get("/logout", (req, res) => {
+    res.clearCookie("username");
+});
 
 AuthRouter.get("/getsubheaderitem", GetSubHeaderItem);
 
@@ -62,9 +65,6 @@ AuthRouter.post("/addinspiration", AddInspiration);
 
 AuthRouter.post("/adddiningcollection", AddDiningCollection);
 AuthRouter.post("/addnightlifecollection", AddNightlifeCollection);
-
-
-// AuthRouter.get("/getCollections", verifyToken, Collections);
 
 
 module.exports = AuthRouter;
